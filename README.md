@@ -19,6 +19,9 @@
 
 > > pth04.c: 使用互斥量实现线程间同步。使用互斥锁保护临界区
 > > 要求：两个线程函数，一个用于全局变量的逐1正价；另一个用于对全局变量逐1减少，在主线程的控制下，增减相同的次数后，使其值保持不变。
+
+> > pth05.c：使用互斥量解决生产者和消费者问题
+> > 1.为了便于观察使用随机函数产生生产者与消费者间的时间间隔，2.设计出具有N个有界缓冲区的生产者和消费者线程函数，3.主线程用于控制，4.尝试多个生产者与消费者的情况
 ```
 gcc -o pth01 pth01.c -lpthread
 
@@ -42,4 +45,16 @@ thread 1195403008 terminated
 thread 1187010304 terminated
 main: all 3 threads have been terminated
 
+tf@z:~/zyb/gitrepo/process_of_linux$ ./pth05 20 2 3
+Consumer 1024923392: delay_time=1
+ buffer[0] ITERM[0],0,
+Producer 1041708800: delay=3
+Producer 1050101504: delay=3
+Consumer 1016530688: delay_time=3
+ buffer[1] ITERM[2],1,00001
+Consumer 1033316096: delay_time=3
+ buffer[2] ITERM[2],0,
+Consumer 1024923392: delay_time=3
+ buffer[3] ITERM[2],0,
+...
 ```
